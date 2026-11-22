@@ -1,0 +1,248 @@
+/* ========== CSS VARIABLES ========== */
+:root {
+  --primary-color: #d71921;   /* MSI red: this is the main brand color used for highlights, buttons, and price text */
+  --secondary-color: #111111; /* dark black: used for the header/footer and other strong contrast areas */
+  --text-color: #1f2937;      /* dark gray text for readable content on light backgrounds */
+  --font-family: Arial, sans-serif; /* simple and clean font stack for a modern tech-looking design */
+}
+
+/* ========== GENERAL PAGE STYLING ========== */
+* {
+  box-sizing: border-box; /* makes width and height include padding and border, so layout stays predictable */
+}
+
+html {
+  scroll-behavior: smooth; /* gives smooth movement when clicking nav links to sections */
+}
+
+body {
+  margin: 0; /* removes default browser spacing around the page */
+  font-family: var(--font-family); /* applies the chosen global font */
+  color: var(--text-color); /* sets the default text color to dark gray */
+  background: #f3f4f6; /* soft gray background gives the page a clean, light layout */
+}
+
+section {
+  padding: 40px 20px; /* adds space above and below each section so content does not feel cramped */
+  max-width: 1000px; /* keeps the layout centered and not too wide on large screens */
+  margin: auto; /* centers the section container horizontally */
+}
+
+h2 {
+  text-align: center; /* centers section titles like Features, Gallery, Pricing, FAQ */
+}
+
+/* ========== NAVBAR (FLEXBOX + STICKY HEADER) ========== */
+nav {
+  display: flex; /* uses flexbox to place brand on left and links on right */
+  justify-content: space-between; /* pushes brand and nav links to opposite ends of the row */
+  align-items: center; /* vertically centers all items inside the navbar */
+  padding: 15px 30px; /* gives the header comfortable left/right spacing */
+  background: var(--secondary-color); /* dark background for strong contrast */
+  position: sticky; /* keeps the navbar visible as the page scrolls */
+  top: 0; /* sticks it to the top of the viewport */
+  z-index: 100; /* keeps the navbar above other content while scrolling */
+}
+
+.brand {
+  color: white; /* makes the brand text readable against the black background */
+  font-size: 22px; /* slightly larger text makes the brand stand out */
+  font-weight: bold; /* makes the brand name bolder and more visible */
+}
+
+.nav-links a {
+  color: white; /* keeps the nav text white for contrast */
+  text-decoration: none; /* removes underline from links */
+  margin-left: 20px; /* adds space between each navigation link */
+  padding: 5px 10px; /* gives clickable area nice padding */
+  border-radius: 5px; /* softens the corners of the hovered link background */
+  transition: 0.3s; /* smooth hover animation */
+}
+
+.nav-links a:hover {
+  background: var(--primary-color); /* red highlight appears on hover for interaction feedback */
+  transform: translateY(-3px); /* lifts the link slightly to create a button-like effect */
+}
+
+/* ========== FEATURES SECTION (4-COLUMN GRID) ========== */
+.features-grid {
+  display: grid; /* creates a grid layout for the feature cards */
+  grid-template-columns: repeat(4, 1fr); /* splits the row into 4 equal columns */
+  gap: 20px; /* adds space between feature cards */
+}
+
+.feature-box {
+  background: white; /* each feature card has a white background to stand out from the page */
+  padding: 20px; /* gives each feature box enough internal spacing */
+  text-align: center; /* centers the icon, title, and text */
+  border-radius: 10px; /* rounds the corners for a modern card look */
+  border-top: 4px solid var(--primary-color); /* adds a red accent line across the top of each card */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* soft shadow gives cards a bit of depth */
+}
+
+.icon {
+  font-size: 40px; /* enlarges the emoji/icon so it stands out clearly */
+}
+
+/* ========== GALLERY SECTION ========== */
+.gallery-grid {
+  display: grid; /* turns the gallery into a grid layout */
+  grid-template-columns: repeat(3, 1fr); /* shows 3 images side by side on large screens */
+  gap: 20px; /* keeps spacing between thumbnails */
+}
+
+figure {
+  text-align: center; /* centers image captions below the images */
+}
+
+figure img {
+  width: 100%; /* makes each image fill its grid column */
+  border-radius: 10px; /* rounds the image corners to match the card style */
+}
+
+/* ========== PRICING SECTION (3-COLUMN CARD GRID) ========== */
+.pricing-grid {
+  display: grid; /* uses CSS grid for the pricing cards */
+  grid-template-columns: repeat(3, 1fr); /* creates 3 equal columns for Basic, Standard, and Premium */
+  gap: 20px; /* space between pricing cards */
+  align-items: center; /* vertically aligns the cards in the grid */
+}
+
+.card {
+  position: relative; /* required so the "Most Popular" badge can be positioned relative to the card */
+  background: white; /* the card background is white for contrast */
+  padding: 25px; /* adds balanced interior spacing */
+  text-align: center; /* centers the card contents */
+  border: 2px solid #ddd; /* light gray border gives the card a soft outline */
+  border-radius: 10px; /* rounds the corners */
+  transition: 0.3s; /* smooth hover animation */
+}
+
+.card h3 {
+  margin-bottom: 8px; /* reduces spacing under the plan title so the price sits closer */
+}
+
+.card:hover {
+  transform: translateY(-10px); /* lifts the card upward on hover to make it feel clickable */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* stronger shadow adds depth when hovering */
+}
+
+.card ul {
+  list-style: none; /* removes default bullet points from the list */
+  padding: 0; /* removes default left padding from the browser */
+  line-height: 2; /* increases line spacing so plan details are easier to read */
+}
+
+.price {
+  font-size: 36px; /* large price text makes the cost easier to notice */
+  font-weight: bold; /* keeps the price prominent */
+  color: var(--primary-color); /* red price text matches the theme */
+  margin-top: 0; /* removes extra top margin so the price sits tightly under the title */
+  margin-bottom: 12px; /* keeps space before the feature list */
+}
+
+.note {
+  text-align: center; /* centers the note below the pricing cards */
+  font-size: 13px; /* smaller text makes it look like a helper note */
+  color: #6b7280; /* muted gray color keeps it secondary to the main pricing */
+}
+
+/* Highlighted Standard card: slightly larger, different border */
+.card.popular {
+  border: 3px solid var(--primary-color); /* stronger red border to highlight the recommended plan */
+  transform: scale(1.03); /* makes the selected card a little larger without looking too oversized */
+  padding: 30px 22px; /* gives the featured card a touch more space while keeping it compact */
+}
+
+.card.popular:hover {
+  transform: scale(1.03) translateY(-10px); /* keeps the card slightly enlarged but not too dramatic on hover */
+}
+
+/* "Most Popular" badge using pseudo-element */
+.card.popular::before {
+  content: "Most Popular"; /* text shown inside the badge */
+  position: absolute; /* positions the badge relative to the card */
+  top: -15px; /* moves the badge above the card */
+  left: 50%; /* centers the badge horizontally */
+  transform: translateX(-50%); /* corrects the centering because left:50% starts from the middle */
+  background: var(--primary-color); /* red badge matches the brand theme */
+  color: white; /* white text for contrast */
+  padding: 5px 15px; /* gives the badge enough clickable-like padding */
+  border-radius: 20px; /* makes the badge pill-shaped */
+  font-size: 14px; /* readable size for a small label */
+  font-weight: bold; /* makes the badge text stand out */
+}
+
+/* ========== BUTTON STYLING ========== */
+button {
+  background: var(--primary-color); /* red button color matches the MSI brand */
+  color: white; /* keeps text readable on red buttons */
+  border: none; /* removes default border for a clean modern look */
+  padding: 10px 20px; /* comfortable button size */
+  border-radius: 5px; /* soft corners */
+  cursor: pointer; /* shows pointer on hover so the button looks clickable */
+  transition: 0.3s; /* smooth animation for hover effects */
+}
+
+button:hover {
+  background: var(--secondary-color); /* darkens the button on hover for contrast */
+  transform: translateY(-3px); /* lifts the button slightly for a hover effect */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* adds depth to the button while hovering */
+}
+
+/* ========== FAQ SECTION (DETAILS/SUMMARY) ========== */
+details {
+  background: white; /* white background keeps the FAQ neat and clean */
+  border: 1px solid #ccc; /* subtle border gives the FAQ item a light frame */
+  padding: 15px; /* spacing inside the FAQ block */
+  margin-bottom: 10px; /* spacing between different FAQ items */
+  border-radius: 8px; /* smooth corners for a modern layout */
+}
+
+summary {
+  cursor: pointer; /* changes the cursor to a pointer so it feels clickable */
+  font-weight: bold; /* makes the FAQ question header stand out */
+}
+
+/* ========== FOOTER + NEWSLETTER FORM ========== */
+footer {
+  background: var(--secondary-color); /* dark footer to match the rest of the brand */
+  color: white; /* white text for readability */
+  text-align: center; /* centers the footer content */
+  padding: 30px 20px; /* comfortable spacing inside the footer */
+}
+
+input {
+  padding: 10px; /* gives the email field enough internal space */
+  border: 2px solid #ccc; /* light gray border for a clean field style */
+  border-radius: 5px; /* rounds text input corners */
+  margin: 0 5px; /* keeps a small gap between the input and other elements */
+}
+
+input:focus {
+  outline: none; /* removes default browser outline to let custom border and glow control appearance */
+  border-color: var(--primary-color); /* changes input border to red when focused */
+  box-shadow: 0 0 6px var(--primary-color); /* adds a soft red glow to show active focus */
+}
+
+/* ========== RESPONSIVE DESIGN (MOBILE / SMALL SCREENS) ========== */
+@media (max-width: 768px) {
+  .features-grid,
+  .gallery-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr; /* on smaller screens, all grids turn into one column for readability */
+  }
+
+  nav {
+    flex-direction: column; /* stacks the brand and nav links vertically on mobile */
+    gap: 10px; /* adds vertical spacing between stacked items */
+  }
+
+  .card.popular {
+    transform: none; /* removes the enlarged scale on smaller screens so it fits better */
+  }
+
+  .card.popular:hover {
+    transform: translateY(-10px); /* keeps small hover lift on mobile while avoiding scaling issues */
+  }
+}
